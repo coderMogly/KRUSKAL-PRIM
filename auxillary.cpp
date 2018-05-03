@@ -93,9 +93,9 @@ void PRIM_MST(graph& G, tree& T){    // implementation of prim for MST
 					//cout<<"node is inserted"<<endl;
 					int ne_cost = cost_edge+cost_root;
 					OP.insert(*it1);
-					OP.chgcost(*it1, ne_cost);
+					OP.chgcost(*it1, ne_cost);		
 					G.set_vertex_value(*it1, ne_cost);
-					G.update_parent(*it1, node);
+					G.update_parent(*it1, node);	// updating parent to keep a track of MST 
 				}else{
 					int cost_root = G.get_vertex_value(node);
 					edge* temp = G.get_edge(*it1, node);
@@ -103,7 +103,7 @@ void PRIM_MST(graph& G, tree& T){    // implementation of prim for MST
 					int ne_cost = cost_edge+cost_root;
 					int old_cost = G.get_vertex_value(*it1);
 					if((cost_root+cost_edge)<old_cost){
-						OP.chgcost(*it1, ne_cost);
+						OP.chgcost(*it1, ne_cost);	//changing the cost to new cost
 						G.set_vertex_value(*it1, ne_cost);
 						G.update_parent(*it1, node);
 					}
